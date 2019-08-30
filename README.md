@@ -37,10 +37,8 @@ cd frontend && npm run dev
 
 +# cors header
 +CORS_ORIGIN_ALLOW_ALL = True
-+
-+ROOT_URLCONF = 'ulb_manager.urls'
 
- TEMPLATES = [
+TEMPLATES = [
      {
          'BACKEND': 'django.template.backends.django.DjangoTemplates',
 -        'DIRS': [],
