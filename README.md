@@ -2,13 +2,27 @@
 
 ```sh
 django-admin startproject demo
-cd demo
-python manage.py startapp backend
-vue init webpack frontend
-cd frontend && npm run dev
 ```
 
-## Edit setting in Django
+
+## Frontend using Vue
+
+```
+vue init webpack frontend
+cd frontend && npm run dev
+npm run build
+```
+
+
+## Backend Using Django
+
+```
+cd demo
+python manage.py startapp backend
+```
+
+
+## Integrate Vue and Django
 
 ```diff
 # Edit demo/demo/setting.py
@@ -55,12 +69,14 @@ TEMPLATES = [
 
 ```
 
+
 ## Start Uwsgi
 
 ```
 source activate test3
 uwsgi --ini uwsgi.ini
 ```
+
 
 ## Start nginx
 
