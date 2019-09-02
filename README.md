@@ -98,6 +98,65 @@ export default {
 }
 ```
 
+### PostgreSQL
+
+1. install psycopy
+
+```
+pip install psycopy
+```
+
+2. postgresql command
+
+  - add role
+  ```
+  create role demo with 
+  login
+  createdb
+  create role;
+  alter use demo with password '123456';
+  create database myproject;
+  grant all privileges on database myproject to demo;
+  ```
+
+  - enable login (peer to trust in /etc/postgresql/11/main/pg_hba.conf)
+  ```
+  # change peer to trust in /etc/postgresql/11/main/pg_hba.conf
+  ```
+
+3. edit DATABASES in setting.py
+```
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'myproject',
+        'USER': 'demo',
+        'PASSWORD': '123456',
+        'HOST': '127.0.0.1',
+        'client_encoding': 'UTF8',
+        'timezone': 'Asia/Shanghai',
+    }
+}
+```
+
+4. edit model.py
+```
+class Book(models.Model):
+    book_name = models.CharField(max_length=64)
+    add_time = models.DateTimeField(auto_now_add=True)
+
+    def __unicode__(self):
+        return self.book_name
+```
+
+5. migrate
+
+```
+python manage.py makemigrations myapp
+python manage.py migrate
+```
+
+
 ## Start Uwsgi
 
 ```
