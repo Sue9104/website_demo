@@ -69,6 +69,34 @@ TEMPLATES = [
 
 ```
 
+### axios
+
+1. install axios
+
+```
+npm install --save axios vue-axios
+```
+
+2. edit vue
+
+```
+export default {
+  name: 'app',
+  data () {
+    return {
+      string_from_api: null
+    }
+  },
+  mounted () {
+    this.axios
+    .get('api/666')
+    .then(response => (this.string_from_api = response.data))
+    .catch( function(error) {
+      console.log(error);
+    })
+  }
+}
+```
 
 ## Start Uwsgi
 
